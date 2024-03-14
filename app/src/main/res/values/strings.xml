@@ -28,4 +28,5 @@
     <string name="from">From</string>
     <string name="choose_room">Choose Room</string>
     <string name="number_of_reviews">%1$d reviews</string>
+    <string name="triple_lowest_price">%1$s%2$s | %3$s%4$s | %5$s%6$s</string>
 </resources>

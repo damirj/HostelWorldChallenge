@@ -11,12 +11,15 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.hostelworldchallenge.R
 import com.example.hostelworldchallenge.databinding.FragmentPropertyDetailsBinding
+import com.example.hostelworldchallenge.models.CurrencyType
 import com.example.hostelworldchallenge.models.PropertyDetails
+import com.example.hostelworldchallenge.network.models.ExchangeRate
 import com.example.hostelworldchallenge.presenters.PropertyDetailsContract
 import com.example.hostelworldchallenge.presenters.PropertyDetailsModel
 import com.example.hostelworldchallenge.presenters.PropertyDetailsPresenter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 @AndroidEntryPoint
 class PropertyDetailsFragment : Fragment(), PropertyDetailsContract.View {
@@ -109,12 +112,29 @@ class PropertyDetailsFragment : Fragment(), PropertyDetailsContract.View {
                 propertyDetails.ratingBreakdown.facilities.toDouble().div(10).toString()
 
             fullLocation.text = propertyDetails.address
-
-            lowestPrice.text = propertyDetails.currency.symbol + propertyDetails.lowestPricePerNight
         }
     }
 
     override fun displayError(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun displayExchangeRate(lowestPriceNumber: Double, exchangeRate: ExchangeRate) {
+        binding.apply {
+            val princeInEUR = lowestPriceNumber.roundToInt()
+            val priceInUSD = (princeInEUR * exchangeRate.rates.USD).roundToInt()
+            val priceInGBP = (princeInEUR * exchangeRate.rates.GBP).roundToInt()
+
+            lowestPrice.text =
+                getString(
+                    R.string.triple_lowest_price,
+                    CurrencyType.EUR.symbol,
+                    princeInEUR.toString(),
+                    CurrencyType.USD.symbol,
+                    priceInUSD.toString(),
+                    CurrencyType.GBP.symbol,
+                    priceInGBP.toString()
+                )
+        }
     }
 }

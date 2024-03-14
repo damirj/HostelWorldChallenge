@@ -22,24 +22,31 @@ class PropertyDetailsPresenter(
     }
 
     override fun screenStarted(propertyId: String) {
+        var lowestPrice = 0.0
         if (propertyDetailsView != null) {
             propertyDetailsView?.showProgress()
-            compositeDisposable.add(propertyDetailsModel.fetchPropertyList()
-                .toObservable()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doFinally {
-                    propertyDetailsView?.hideProgress()
-                }.subscribe({
-                    propertyDetailsView?.displayPropertyDetails(
-                        parsePropertyResponse(
-                            propertyPreviewResponse = it,
-                            propertyId = propertyId
-                        )
-                    )
-                }, {
-                    propertyDetailsView?.displayError("Something went wrong. Please try again!")
-                })
+            val fetchPropertyList =
+                propertyDetailsModel.fetchPropertyList().toObservable().subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+            val getExchangeRate = fetchPropertyList.flatMap {
+                val parsedPropertyResponse = parsePropertyResponse(
+                    propertyPreviewResponse = it,
+                    propertyId = propertyId
+                )
+                lowestPrice = parsedPropertyResponse.lowestPricePerNight.toDouble()
+                propertyDetailsView?.displayPropertyDetails(parsedPropertyResponse)
+
+                propertyDetailsModel.getExchangeRates().toObservable().subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+            }
+
+            compositeDisposable.add(
+                getExchangeRate.doFinally { propertyDetailsView?.hideProgress() }
+                    .subscribe({
+                        propertyDetailsView?.displayExchangeRate(lowestPrice, it)
+                    }, {
+                        propertyDetailsView?.displayError(it.localizedMessage ?: "Something went wrong. Please try again!")
+                    })
             )
         }
     }
