@@ -15,4 +15,16 @@
     <string name="lowest_price">%1$s%2$s</string>
     <string name="showing_properties">Showing %1$d properties.</string>
     <string name="try_again">Try again</string>
+    <string name="back">back</string>
+    <string name="location_pin">location pin</string>
+    <string name="about">About</string>
+    <string name="reviews">Reviews</string>
+    <string name="value_for_money">Value for money</string>
+    <string name="security">Security</string>
+    <string name="cleanliness">Cleanliness</string>
+    <string name="staff">Staff</string>
+    <string name="location">Location</string>
+    <string name="facilities">Facilities</string>
+    <string name="from">From</string>
+    <string name="choose_room">Choose Room</string>
 </resources>

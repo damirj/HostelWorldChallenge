@@ -10,7 +10,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:strokeColor="#D6D8DA"
+    app:strokeColor="@color/grey"
     app:strokeWidth="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,6 +1,558 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="6dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/back"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/headerName"
+            style="@style/SubtitleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            tools:text="Lub d Bangkok Siam" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/chooseRoomLayout"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="12dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/previewImage"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginTop="6dp"
+                android:contentDescription="@string/property_preview"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ImageView.Corner" />
+
+            <TextView
+                android:id="@+id/propertyType"
+                style="@style/TextRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/previewImage"
+                tools:text="Hostel" />
+
+            <TextView
+                android:id="@+id/propertyName"
+                style="@style/TitleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                app:layout_constraintEnd_toStartOf="@id/startIcon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/propertyType"
+                tools:text="Lub d Bangkok Siam" />
+
+            <ImageView
+                android:id="@+id/locationPinImage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="6dp"
+                android:contentDescription="@string/location_pin"
+                android:src="@drawable/ic_location_pin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/propertyName" />
+
+            <TextView
+                android:id="@+id/cityName"
+                style="@style/TextRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="2dp"
+                android:gravity="center_vertical"
+                app:layout_constraintBottom_toBottomOf="@id/locationPinImage"
+                app:layout_constraintStart_toEndOf="@id/locationPinImage"
+                app:layout_constraintTop_toTopOf="@id/locationPinImage"
+                tools:text="Bangkok" />
+
+            <ImageView
+                android:id="@+id/startIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="4dp"
+                android:contentDescription="@string/star"
+                android:src="@drawable/ic_star"
+                app:layout_constraintBottom_toBottomOf="@id/ratingNumber"
+                app:layout_constraintEnd_toStartOf="@id/ratingNumber"
+                app:layout_constraintTop_toTopOf="@id/ratingNumber" />
+
+            <TextView
+                android:id="@+id/ratingNumber"
+                style="@style/TitleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/propertyName"
+                tools:text="7.7" />
+
+            <TextView
+                android:id="@+id/numberOfRatingsTitle"
+                style="@style/TextRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/ratingNumber"
+                app:layout_constraintTop_toBottomOf="@id/ratingNumber"
+                tools:text="2887 reviews" />
+
+            <TextView
+                android:id="@+id/aboutTitle"
+                style="@style/TitleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/about"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/locationPinImage" />
+
+            <TextView
+                android:id="@+id/aboutMessage"
+                style="@style/TextRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:justificationMode="inter_word"
+                android:maxLines="4"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aboutTitle"
+                tools:text="Siam Eco Hostel is a new modern hostel located in heart of Bangkok. Siam Eco Hostel is a new modern hostel located in heart of Bangkok. Siam Eco Hostel is a new modern hostel located in heart of Bangkok. Siam Eco Hostel is a new modern hostel located in heart of Bangkok. Siam Eco Hostel is a new modern hostel located in heart of Bangkok. Siam Eco Hostel is a new modern hostel located in heart of Bangkok." />
+
+            <View
+                android:id="@+id/horizontalRuleAbout"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/aboutMessage" />
+
+            <TextView
+                android:id="@+id/reviewsTitle"
+                style="@style/TitleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:text="@string/reviews"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horizontalRuleAbout" />
+
+            <ImageView
+                android:id="@+id/starIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/star"
+                android:src="@drawable/ic_star"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/reviewsTitle" />
+
+            <TextView
+                android:id="@+id/starRatingNumber"
+                style="@style/TitleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                app:layout_constraintBottom_toBottomOf="@id/starIcon"
+                app:layout_constraintStart_toEndOf="@id/starIcon"
+                app:layout_constraintTop_toTopOf="@id/starIcon"
+                tools:text="9.2" />
+
+            <TextView
+                android:id="@+id/starRatingDescription"
+                style="@style/TextRegular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/starIcon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/starRatingNumber"
+                app:layout_constraintTop_toTopOf="@id/starIcon"
+                tools:text="Superb (35)" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/valueForMoneyLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/starRatingDescription">
+
+                <TextView
+                    android:id="@+id/valueForMoneyTitle"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/value_for_money"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/valueForMoneyBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:progressDrawable="@drawable/progress_bar"
+                    android:progressTint="#f6a80d"
+                    app:layout_constraintBottom_toBottomOf="@id/valueForMoneyTitle"
+                    app:layout_constraintEnd_toStartOf="@id/valueForMoneyRating"
+                    app:layout_constraintTop_toTopOf="@id/valueForMoneyTitle"
+                    tools:progress="92" />
+
+                <TextView
+                    android:id="@+id/valueForMoneyRating"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/valueForMoneyTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/valueForMoneyTitle"
+                    tools:text="9.2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/securityLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/valueForMoneyLayout">
+
+                <TextView
+                    android:id="@+id/securityTitle"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/security"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/securityBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:progressDrawable="@drawable/progress_bar"
+                    android:progressTint="#f6a80d"
+                    app:layout_constraintBottom_toBottomOf="@id/securityTitle"
+                    app:layout_constraintEnd_toStartOf="@id/securityRating"
+                    app:layout_constraintTop_toTopOf="@id/securityTitle"
+                    tools:progress="92" />
+
+                <TextView
+                    android:id="@+id/securityRating"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/securityTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/securityTitle"
+                    tools:text="9.2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cleanlinessLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/securityLayout">
+
+                <TextView
+                    android:id="@+id/cleanlinessTitle"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cleanliness"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/cleanlinessBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:progressDrawable="@drawable/progress_bar"
+                    android:progressTint="#f6a80d"
+                    app:layout_constraintBottom_toBottomOf="@id/cleanlinessTitle"
+                    app:layout_constraintEnd_toStartOf="@id/cleanlinessRating"
+                    app:layout_constraintTop_toTopOf="@id/cleanlinessTitle"
+                    tools:progress="92" />
+
+                <TextView
+                    android:id="@+id/cleanlinessRating"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/cleanlinessTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/cleanlinessTitle"
+                    tools:text="9.2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/staffLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/cleanlinessLayout">
+
+                <TextView
+                    android:id="@+id/staffTitle"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/staff"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/staffBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:progressDrawable="@drawable/progress_bar"
+                    android:progressTint="#f6a80d"
+                    app:layout_constraintBottom_toBottomOf="@id/staffTitle"
+                    app:layout_constraintEnd_toStartOf="@id/staffRating"
+                    app:layout_constraintTop_toTopOf="@id/staffTitle"
+                    tools:progress="92" />
+
+                <TextView
+                    android:id="@+id/staffRating"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/staffTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/staffTitle"
+                    tools:text="9.2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/locationLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/staffLayout">
+
+                <TextView
+                    android:id="@+id/locationTitle"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/locationBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:progressDrawable="@drawable/progress_bar"
+                    android:progressTint="#f6a80d"
+                    app:layout_constraintBottom_toBottomOf="@id/locationTitle"
+                    app:layout_constraintEnd_toStartOf="@id/locationRating"
+                    app:layout_constraintTop_toTopOf="@id/locationTitle"
+                    tools:progress="92" />
+
+                <TextView
+                    android:id="@+id/locationRating"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/locationTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/locationTitle"
+                    tools:text="9.2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/facilitiesLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/locationLayout">
+
+                <TextView
+                    android:id="@+id/facilitiesTitle"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/facilities"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/facilitiesBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:progressDrawable="@drawable/progress_bar"
+                    android:progressTint="#f6a80d"
+                    app:layout_constraintBottom_toBottomOf="@id/facilitiesTitle"
+                    app:layout_constraintEnd_toStartOf="@id/facilitiesRating"
+                    app:layout_constraintTop_toTopOf="@id/facilitiesTitle"
+                    tools:progress="92" />
+
+                <TextView
+                    android:id="@+id/facilitiesRating"
+                    style="@style/TextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/facilitiesTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/facilitiesTitle"
+                    tools:text="9.2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/fullLocationTitle"
+                style="@style/TitleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/facilitiesLayout" />
+
+
+            <ImageView
+                android:id="@+id/fullLocationPinImage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/location_pin"
+                android:src="@drawable/ic_location_pin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fullLocationTitle" />
+
+            <TextView
+                android:id="@+id/fullLocation"
+                style="@style/TextRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="2dp"
+                android:gravity="center_vertical"
+                app:layout_constraintBottom_toBottomOf="@id/fullLocationPinImage"
+                app:layout_constraintStart_toEndOf="@id/fullLocationPinImage"
+                app:layout_constraintTop_toTopOf="@id/fullLocationPinImage"
+                tools:text="Bangkok" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/chooseRoomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners_choose_room"
+        android:elevation="20dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="10dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/fromText"
+            style="@style/TextRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/from"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/SubtitleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fromText"
+            tools:text="$12" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/chooseRoomButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/rounded_corners_button"
+            app:backgroundTint="@color/orange"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/choose_room"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
