@@ -8,6 +8,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 @Module
@@ -26,6 +27,7 @@ class NetworkingModule {
         return Retrofit.Builder()
             .baseUrl("https://gist.githubusercontent.com/PedroTrabulo-Hostelworld/")
             .client(client)
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }
