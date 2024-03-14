@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.hostelworldchallenge.databinding.FragmentPropertyDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PropertyDetailsFragment : Fragment() {
 
     private var _binding: FragmentPropertyDetailsBinding? = null
