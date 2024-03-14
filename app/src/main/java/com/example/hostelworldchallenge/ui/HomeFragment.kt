@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.hostelworldchallenge.R
 import com.example.hostelworldchallenge.databinding.FragmentHomeBinding
 import com.example.hostelworldchallenge.models.PropertyPreview
 import com.example.hostelworldchallenge.presenters.HomeContract
@@ -45,20 +48,26 @@ class HomeFragment : Fragment(), HomeContract.View {
         binding.propertyList.layoutManager = layoutManager
         binding.propertyList.adapter = adapter
 
-        // homePresenter?.screenStarted()
+        binding.tryAgainButton.setOnClickListener {
+            binding.tryAgainButton.isVisible = false
+            homePresenter?.screenStarted()
+        }
+
+        homePresenter?.screenStarted()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        homePresenter?.onDestroy()
     }
 
     override fun showProgress() {
-        // TODO("Not yet implemented")
+        binding.loadingIndicator.isVisible = true
     }
 
     override fun hideProgress() {
-        // TODO("Not yet implemented")
+        binding.loadingIndicator.isVisible = false
     }
 
     override fun displayPropertyList(propertyList: List<PropertyPreview>) {
@@ -66,6 +75,14 @@ class HomeFragment : Fragment(), HomeContract.View {
     }
 
     override fun displayError(message: String) {
-        // TODO("Not yet implemented")
+        binding.tryAgainButton.isVisible = true
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun displayHeaderInfo(city: String, numberOfProperties: Int) {
+        binding.apply {
+            cityTitle.text = city
+            propertyNumTitle.text = getString(R.string.showing_properties, numberOfProperties)
+        }
     }
 }

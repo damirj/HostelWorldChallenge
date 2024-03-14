@@ -13,4 +13,6 @@
     <string name="no_dorm_availability">No Dorm Availability</string>
     <string name="no_private_availability">No Private Availability</string>
     <string name="lowest_price">%1$s%2$s</string>
+    <string name="showing_properties">Showing %1$d properties.</string>
+    <string name="try_again">Try again</string>
 </resources>

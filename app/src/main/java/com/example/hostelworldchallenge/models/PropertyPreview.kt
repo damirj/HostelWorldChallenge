@@ -33,7 +33,7 @@ data class PropertyPreview(
                 "Fabulous"
             }
 
-            ratingNumber >= 9 && ratingNumber < 10 -> {
+            ratingNumber in 9.0..10.0 -> {
                 "Superb"
             }
 
