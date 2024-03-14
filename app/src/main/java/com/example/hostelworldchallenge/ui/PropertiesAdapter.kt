@@ -10,7 +10,8 @@ import com.example.hostelworldchallenge.R
 import com.example.hostelworldchallenge.databinding.ItemPropertyBinding
 import com.example.hostelworldchallenge.models.PropertyPreview
 
-class PropertiesAdapter : RecyclerView.Adapter<PropertiesAdapter.PropertyViewHolder>() {
+class PropertiesAdapter(private val propertyClicked: (String) -> Unit) :
+    RecyclerView.Adapter<PropertiesAdapter.PropertyViewHolder>() {
 
     private val properties: MutableList<PropertyPreview> = mutableListOf()
 
@@ -39,6 +40,7 @@ class PropertiesAdapter : RecyclerView.Adapter<PropertiesAdapter.PropertyViewHol
 
         fun bind(position: Int) {
             val property = properties[position]
+            binding.root.setOnClickListener { propertyClicked(property.id) }
             binding.apply {
                 Glide.with(binding.root.context)
                     .load(property.previewImage)

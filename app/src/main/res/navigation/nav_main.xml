@@ -18,5 +18,9 @@
         android:id="@+id/propertyDetailsFragment"
         android:name="com.example.hostelworldchallenge.ui.PropertyDetailsFragment"
         android:label="HostelDetailsFragment"
-        tools:layout="@layout/fragment_property_details" />
+        tools:layout="@layout/fragment_property_details">
+        <argument
+            android:name="propertyId"
+            app:argType="string" />
+    </fragment>
 </navigation>

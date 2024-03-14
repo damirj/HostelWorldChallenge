@@ -1,19 +1,19 @@
 package com.example.hostelworldchallenge.models
 
-data class PropertyPreview(
+import com.example.hostelworldchallenge.network.models.RatingBreakdown
+
+data class PropertyDetails(
     val id: String,
     val previewImage: String,
     val propertyName: String,
     val ratingNumber: Double,
     val numberOfRatings: Int,
     val propertyType: String,
-    val propertyDistance: Double,
-    val freeWifi: Boolean,
-    val freeBreakfast: Boolean,
-    val freeCancellation: Boolean,
-    val featuredProperty: Boolean,
-    val lowestDormPricePerNight: String,
-    val lowestPrivatePricePerNight: String,
+    val lowestPricePerNight: String,
+    val overview: String,
+    val ratingBreakdown: RatingBreakdown,
+    val address: String,
+    val city: String,
     val currency: CurrencyType
 ) {
     fun getRatingName(): String {
@@ -43,8 +43,4 @@ data class PropertyPreview(
             }
         }
     }
-}
-
-enum class CurrencyType(val symbol: String) {
-    EUR("€"), USD("$"), GBP("£")
 }

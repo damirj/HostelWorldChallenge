@@ -5,10 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ProgressBar
+        android:id="@+id/loadingIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="12dp"
@@ -42,6 +52,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:layout_marginBottom="24dp"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="12dp">
 
@@ -62,7 +73,7 @@
                 style="@style/TextRegular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="12dp"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/previewImage"
@@ -137,7 +148,7 @@
                 style="@style/TitleBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/about"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/locationPinImage" />
@@ -148,6 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                android:textColor="@color/darkGrey"
                 android:justificationMode="inter_word"
                 android:maxLines="4"
                 android:textSize="14sp"
@@ -168,7 +180,7 @@
                 style="@style/TitleBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/reviews"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/horizontalRuleAbout" />
@@ -211,7 +223,7 @@
                 android:id="@+id/valueForMoneyLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 app:layout_constraintTop_toBottomOf="@id/starRatingDescription">
 
                 <TextView
@@ -474,6 +486,7 @@
             <TextView
                 android:id="@+id/fullLocationTitle"
                 style="@style/TitleBold"
+                android:layout_marginTop="24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/location"
@@ -513,7 +526,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corners_choose_room"
-        android:elevation="20dp"
+        android:elevation="50dp"
         android:paddingHorizontal="12dp"
         android:paddingVertical="10dp"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -524,13 +537,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/from"
+            android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/lowestPrice"
             style="@style/SubtitleBold"
             android:layout_width="wrap_content"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -543,7 +559,7 @@
             android:layout_height="48dp"
             android:paddingHorizontal="20dp"
             android:background="@drawable/rounded_corners_button"
-            app:backgroundTint="@color/orange"
+            app:backgroundTint="#CC0073"
             android:fontFamily="sans-serif-medium"
             android:text="@string/choose_room"
             android:textSize="16sp"

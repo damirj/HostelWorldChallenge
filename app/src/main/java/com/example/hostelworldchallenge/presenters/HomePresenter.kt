@@ -1,5 +1,8 @@
 package com.example.hostelworldchallenge.presenters
 
+import androidx.core.os.bundleOf
+import androidx.navigation.NavController
+import com.example.hostelworldchallenge.R
 import com.example.hostelworldchallenge.models.CurrencyType
 import com.example.hostelworldchallenge.models.PropertyPreview
 import com.example.hostelworldchallenge.network.models.PropertyPreviewResponse
@@ -43,9 +46,19 @@ class HomePresenter(
         compositeDisposable.clear()
     }
 
+    override fun propertyClicked(navController: NavController, propertyId: String) {
+        navController.navigate(
+            R.id.propertyDetailsFragment,
+            bundleOf(
+                "propertyId" to propertyId,
+            )
+        )
+    }
+
     private fun parsePropertyResponse(propertyPreviewResponse: PropertyPreviewResponse): List<PropertyPreview> {
         val propertyData = propertyPreviewResponse.properties.map {
             PropertyPreview(
+                id = it.id.toString(),
                 previewImage = "https://" + it.imagesGallery.first().prefix + it.imagesGallery.first().suffix,
                 propertyName = it.name,
                 ratingNumber = it.overallRating.overall.toDouble().div(10),

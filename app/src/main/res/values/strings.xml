@@ -27,4 +27,5 @@
     <string name="facilities">Facilities</string>
     <string name="from">From</string>
     <string name="choose_room">Choose Room</string>
+    <string name="number_of_reviews">%1$d reviews</string>
 </resources>
