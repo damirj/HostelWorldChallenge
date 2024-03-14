@@ -8,7 +8,7 @@ class HostelWorldRepository @Inject constructor(
     private val hostelWorldService: HostelWorldService
 ) {
 
-    suspend fun getHostelList(): List<PropertyPreview>? {
+    fun getHostelList(): List<PropertyPreview>? {
         val propertyListResponse = hostelWorldService.getHostelList()
         if (!propertyListResponse.isSuccessful) return null
         val propertyData = propertyListResponse.body()?.properties?.map {
