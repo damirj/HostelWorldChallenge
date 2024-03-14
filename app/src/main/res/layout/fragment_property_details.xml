@@ -10,6 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -528,7 +530,7 @@
         android:background="@drawable/rounded_corners_choose_room"
         android:elevation="50dp"
         android:paddingHorizontal="12dp"
-        android:paddingVertical="10dp"
+        android:paddingVertical="14dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
@@ -559,7 +561,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:paddingHorizontal="20dp"
-            android:background="@drawable/rounded_corners_button"
+            android:background="@drawable/rounded_corners_button_transparent"
             app:backgroundTint="#CC0073"
             android:fontFamily="sans-serif-medium"
             android:text="@string/choose_room"
