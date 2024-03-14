@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">HostelWorldChallenge</string>
+    <string name="property_preview">Property preview</string>
+    <string name="star">star</string>
+    <string name="dorms_from">Dorms from</string>
+    <string name="privates_from">Privates from</string>
+    <string name="free_wifi">free wifi</string>
+    <string name="free_breakfast">Free breakfast</string>
+    <string name="featured_property">Featured property</string>
+    <string name="free_cancellation">Free cancellation</string>
+    <string name="rating_text">%1$s (%2$d)</string>
+    <string name="km_from_city_centre">%1$s - %2$skm from city centre</string>
+    <string name="no_dorm_availability">No Dorm Availability</string>
+    <string name="no_private_availability">No Private Availability</string>
+    <string name="lowest_price">%1$s%2$s</string>
 </resources>

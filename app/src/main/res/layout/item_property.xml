@@ -1,0 +1,243 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="20dp"
+    android:background="@color/white"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:strokeColor="#D6D8DA"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="0dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="6dp"
+        android:paddingBottom="20dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/previewImage"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginStart="6dp"
+            android:contentDescription="@string/property_preview"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ImageView.Corner" />
+
+        <LinearLayout
+            android:id="@+id/propertyBannersLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/previewImage">
+
+            <TextView
+                android:id="@+id/featuredPropertyBanner"
+                style="@style/FeaturedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/highlighted_property_background"
+                android:backgroundTint="#932AA8"
+                android:text="@string/featured_property"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/previewImage" />
+
+            <TextView
+                android:id="@+id/freeCancellationBanner"
+                style="@style/FeaturedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/highlighted_property_background"
+                android:backgroundTint="#30cf72"
+                android:text="@string/free_cancellation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/featuredPropertyBanner" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/propertyName"
+            style="@style/SubtitleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/previewImage"
+            tools:text="Mad Monkey Bangkok" />
+
+        <ImageView
+            android:id="@+id/starIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/star"
+            android:src="@drawable/ic_star"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/propertyName" />
+
+        <TextView
+            android:id="@+id/starRatingNumber"
+            style="@style/SubtitleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/starIcon"
+            app:layout_constraintStart_toEndOf="@id/starIcon"
+            app:layout_constraintTop_toTopOf="@id/starIcon"
+            tools:text="9.2" />
+
+        <TextView
+            android:id="@+id/starRatingDescription"
+            style="@style/TextRegular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/starIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/starRatingNumber"
+            app:layout_constraintTop_toTopOf="@id/starIcon"
+            tools:text="Superb (35)" />
+
+        <TextView
+            android:id="@+id/shortDescriptionText"
+            style="@style/TextRegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/textLight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/starIcon"
+            tools:text="Hostel - 6.35km from city centre" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/freeFeaturesLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shortDescriptionText">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/freeBreakfastIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/rounded_icon_corners"
+                android:padding="4dp"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/free_breakfast"
+                    android:src="@drawable/ic_free_breakfast" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/freeWifiIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="2dp"
+                android:background="@drawable/rounded_icon_corners"
+                android:padding="4dp"
+                app:layout_constraintStart_toEndOf="@id/freeBreakfastIcon"
+                app:layout_constraintTop_toBottomOf="@id/shortDescriptionText"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/free_wifi"
+                    android:src="@drawable/ic_free_wifi" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/dormsFromText"
+            style="@style/TextRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="6dp"
+            android:maxWidth="100dp"
+            android:gravity="center"
+            android:text="@string/dorms_from"
+            android:textColor="@color/textLight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/freeFeaturesLayout" />
+
+        <TextView
+            android:id="@+id/dormPrice"
+            style="@style/TextRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="6dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dormsFromText"
+            tools:text="$7" />
+
+        <View
+            android:id="@+id/priceVerticalRule"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="12dp"
+            android:background="#D6D8DA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/dormsFromText"
+            app:layout_constraintTop_toTopOf="@id/dormsFromText" />
+
+        <TextView
+            android:id="@+id/privatesFromText"
+            style="@style/TextRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:layout_marginEnd="12dp"
+            android:text="@string/privates_from"
+            android:maxWidth="100dp"
+            android:textColor="@color/textLight"
+            app:layout_constraintEnd_toStartOf="@id/priceVerticalRule"
+            app:layout_constraintTop_toBottomOf="@id/freeFeaturesLayout" />
+
+        <TextView
+            android:id="@+id/privatePrice"
+            style="@style/TextRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="12dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/priceVerticalRule"
+            app:layout_constraintTop_toBottomOf="@id/privatesFromText"
+            tools:text="$15" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
