@@ -57,6 +57,7 @@ class PropertyDetailsFragment : Fragment(), PropertyDetailsContract.View {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        propertyDetailsPresenter?.onDestroy()
     }
 
     override fun showProgress() {
